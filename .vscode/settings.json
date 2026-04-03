@@ -3,5 +3,6 @@
 {
    "files.associations": {
       "**/scripts/Makefile.*": "makefile",
-   }
+   },
+   "editor.rulers": [ 80 ],
 }

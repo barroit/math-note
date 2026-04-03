@@ -2,13 +2,14 @@
 
 this_dir := $(dir $(lastword $(MAKEFILE_LIST)))
 
-note-src := $(filter-out %index.ja.tex,$(wildcard $(this_dir)/*.tex))
 note-doc := $(this_dir)/index.ja.tex
+note-src := $(filter-out $(note-doc),$(wildcard $(this_dir)/*.tex))
 note-y := $(this_dir)/$(objtree)/note.pdf
 
 $(note-y): $(note-doc) $(note-src)
 	mkdir -p $(@D)
-	$(lualatex) --output-directory=$(@D) --jobname=$(basename $(@F)) $<
+	$(lualatex) --halt-on-error \
+		    --output-directory=$(@D) --jobname=$(basename $(@F)) $<
 
 .PHONY: hot-build
 
