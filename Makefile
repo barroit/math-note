@@ -19,8 +19,12 @@ $(objtree)/%.pdf: %/
 	mkdir -p $(@D)
 	cp $*/$(objtree)/note.pdf $@
 
-
 .PHONY: $(notes-hot-build)
 
 %/hot-build:
 	$(MAKE) -f $*/Makefile hot-build
+
+.PHONY: clean
+
+clean:
+	find . -type d -name build -exec rm -rf {} +
