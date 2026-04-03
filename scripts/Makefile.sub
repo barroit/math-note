@@ -2,9 +2,15 @@
 
 this_dir := $(dir $(lastword $(MAKEFILE_LIST)))
 
-note-src := $(this_dir)/index.ja.tex $(wildcard $(this_dir)/*.tex)
-note-y   := $(this_dir)/$(objtree)/note.pdf
+note-src := $(filter-out %index.ja.tex,$(wildcard $(this_dir)/*.tex))
+note-doc := $(this_dir)/index.ja.tex
+note-y := $(this_dir)/$(objtree)/note.pdf
 
-$(note-y): $(note-src)
+$(note-y): $(note-doc) $(note-src)
 	mkdir -p $(@D)
 	$(lualatex) --output-directory=$(@D) --jobname=$(basename $(@F)) $<
+
+.PHONY: hot-build
+
+hot-build: $(note-y)
+	$(onchange) $(note-doc) $(note-src) -- $(MAKE) $(this_dir)
