@@ -1,0 +1,148 @@
+% SPDX-License-Identifier: CC-BY-NC-4.0
+
+\documentclass[11pt]{ltjsreport}
+
+\usepackage{geometry}
+\usepackage{luatexja-fontspec}
+\usepackage{unicode-math}
+\usepackage{pgfplots}
+
+\geometry{margin=1in, top=.5in}
+
+\setmainjfont{Noto Sans JP}
+\setmainfont{Noto Sans}
+
+\pgfplotsset{compat=1.18}
+
+\setlength{\intextsep}{.5in}
+
+\title{歌声合成ノート}
+\author{Jiamu Sun}
+\date{2026 年 4 月 3 日}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{chapter}{0}
+\chapter{関数}
+
+関数 \( f : A \to B \) とは，任意の \( a \in A \) に対して、\( f(a) \in B \) が
+一意に定まる対応である。
+
+\section{変数}
+
+変数とは、対象とする集合の元を表す記号であり、状況に応じて異なる値をとり得るもの
+である。
+
+例えば、\( x + 1 \) における \( x \) や、\( f(x) = x^2 \) における \( x \) は変
+数である。
+
+\section{定義域}
+
+定義域とは、関数に入力できる値全体の集合である。
+
+例えば、\( f : \mathbb{R} \to \mathbb{R} \) を \( f(x) = x^2 \) で定めるとき、
+\( f \) の定義域は \( \mathbb{R} \) である。
+
+\section{値域}
+
+値域とは、関数が実際にとる値全体の集合である。
+
+例えば、\( f : \mathbb{R} \to \mathbb{R} \) を \( f(x) = x^2 \) で定めるとき、
+\( f \) の値域は \( \{ y \in \mathbb{R} \mid y \ge 0 \} \) である。
+
+\section{終域}
+
+終域とは、関数の出力先として定められた集合である。また、値域は関数が実際にとる値
+全体の集合であるから、値域は終域の部分集合である。
+
+例えば、\( f : \mathbb{R} \to \mathbb{R} \) を \( f(x) = x^2 \) で定めるとき：
+
+\begin{itemize}
+   \item 終域は \( \mathbb{R} \)
+   \item 値域は \( \{ y \in \mathbb{R} \mid y \ge 0 \} \)
+\end{itemize}
+
+\section{対応}
+
+対応とは、定義域の各元に対して、終域の元をただ一つ結び付けることである。
+
+例えば、\( f(x) = x^2 \) は、各実数 \( x \) に対して \( x^2 \) を対応させる関数
+である。
+
+\section{記法}
+
+関数は、\( f : A \to B \) のように表す。
+
+これは、関数 \( f \) が集合 \( A \) の各元に対して、集合 \( B \) の元をただ一つ
+対応させることを表す。
+
+また、\( a \in A \) に対する対応先を \( f(a) \) と書く。
+
+例えば、各実数 \( x \) に対して \( 2x + 1 \) を対応させる関数は、
+\[
+   f : \mathbb{R} \to \mathbb{R}, \quad x \mapsto 2x + 1
+\]
+と表す。このとき、\( f(x) = 2x + 1 \) である。
+
+\section{グラフ}
+
+関数のグラフとは、各 \( x \) に対して点 \( (x, f(x)) \) を座標平面上に表したもの
+である。
+
+例えば、\( f(x) = 2x + 1 \) のグラフは、点 \( (x, 2x + 1) \) 全体からなる。
+
+\begin{figure}[h]
+   \centering
+   \begin{tikzpicture}
+      \begin{axis}[axis lines=middle, xmin=-3, xmax=3, ymin=-5, ymax=7,
+                   xlabel={$x$}, ylabel={$y$}, domain=-3:3, samples=2,
+                   grid=both, width=10cm, height=8cm]
+         \addplot[thick] {2*x + 1};
+      \end{axis}
+   \end{tikzpicture}
+   \caption{\( f(x) = 2x + 1 \)}
+\end{figure}
+
+\section{初等関数}
+
+基本関数とは、関数の性質を学ぶときの基礎となる代表的な関数である。
+
+例えば、定数関数、一次関数、二次関数、べき関数、指数関数、対数関数、三角関数など
+がある。
+
+\section{合成関数}
+
+合成関数とは、ある関数の出力を別の関数の入力として得られる関数である。
+
+関数 \( f : A \to B \)、\( g : B \to C \) に対して、
+\[
+   (g \circ f)(x) = g(f(x))
+\]
+で定まる関数 \( g \circ f : A \to C \) を、\( f \) と \( g \) の合成関数という。
+
+例えば、\( f(x) = 2x + 1 \)、\( g(x) = x^2 \) とするとき、
+\[
+   (g \circ f)(x) = g(f(x)) = (2x + 1)^2
+\]
+である。
+
+\section{逆関数}
+
+逆関数とは、ある関数の対応を逆にした関数である。
+
+関数 \( f : A \to B \) に対して、任意の \( b \in B \) に対し \( f(a) = b \) を満
+たす \( a \in A \) がただ一つ存在するとき、
+\[
+   f^{-1}(b) = a
+\]
+で定まる関数 \( f^{-1} : B \to A \) を \( f \) の逆関数という。
+
+例えば、\( f(x) = 2x + 1 \) とするとき、
+\[
+   f^{-1}(x) = \frac{x - 1}{2}
+\]
+である。
+
+\end{document}

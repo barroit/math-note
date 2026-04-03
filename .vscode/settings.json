@@ -3,6 +3,7 @@
 {
    "files.associations": {
       "**/scripts/Makefile.*": "makefile",
+      "**/README": "rst-ja",
    },
    "editor.rulers": [ 80 ],
 }
